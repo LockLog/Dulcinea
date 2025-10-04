@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulcinea Sabores - Pastelería Artesanal</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #fff9f5;
+            color: #5a3e36;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, #ff6b9d, #ff9e6b);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .logo span {
+            color: #ffeb3b;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #ffeb3b 0%, #ff9e6b 50%, #ff6b9d 100%);
+            color: white;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #2196f3;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: #0d8bf2;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* Sección de productos */
+        .products {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fff9f5;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff6b9d;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #ffeb3b, #ff9e6b, #ff6b9d);
+            margin: 10px auto;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .product-item {
+            text-align: center;
+        }
+        
+        .circle-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .circle-image::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffeb3b, #ff9e6b, #ff6b9d, #2196f3);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .circle-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        
+        .circle-image:hover::before {
+            opacity: 1;
+        }
+        
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff6b9d;
+        }
+        
+        .product-item p {
+            color: #7a5d54;
+        }
+        
+        /* Sección de precios */
+        .pricing {
+            background: linear-gradient(to bottom, #e3f2fd, #fff9f5);
+            padding: 80px 0;
+        }
+        
+        .pricing-table {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: linear-gradient(to right, #ff6b9d, #ff9e6b);
+            font-weight: 600;
+            color: white;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: #fff0f5;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: #2196f3;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, #2196f3, #ff6b9d);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #ffeb3b;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 30px;
+            }
+            
+            .circle-image {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Dulcinea <span>Sabores</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Dulces Momentos, Sabores Inolvidables</h2>
+            <p>En Dulcinea Sabores creamos pasteles y postres artesanales con los ingredientes más frescos y el toque especial de la tradición familiar. Cada bocado es una experiencia única.</p>
+            <a href="#precios" class="btn">Ver Precios</a>
+        </div>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section class="products" id="productos">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="circle-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pastel de Chocolate">
+                    </div>
+                    <h3>Pastel de Chocolate</h3>
+                    <p>Delicioso pastel con triple capa de chocolate belga y relleno cremoso.</p>
+                </div>
+                <div class="product-item">
+                    <div class="circle-image">
+                        <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cupcakes Variados">
+                    </div>
+                    <h3>Cupcakes Variados</h3>
+                    <p>Pequeñas delicias con diferentes sabores y decoraciones creativas.</p>
+                </div>
+                <div class="product-item">
+                    <div class="circle-image">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Galletas Decoradas">
+                    </div>
+                    <h3>Galletas Decoradas</h3>
+                    <p>Galletas artesanales con diseños personalizados para cada ocasión.</p>
+                </div>
+                <div class="product-item">
+                    <div class="circle-image">
+                        <img src="https://images.unsplash.com/photo-1586788680434-30d8b2f0466d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tartaletas de Frutas">
+                    </div>
+                    <h3>Tartaletas de Frutas</h3>
+                    <p>Exquisitas tartaletas con frutas frescas de temporada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Precios -->
+    <section class="pricing" id="precios">
+        <div class="container">
+            <h2 class="section-title">Nuestra Lista de Precios</h2>
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pastel de Chocolate (8 porciones)</td>
+                            <td>Triple capa de chocolate belga con relleno cremoso</td>
+                            <td class="price">$25.000</td>
+                        </tr>
+                        <tr>
+                            <td>Pastel de Vainilla (8 porciones)</td>
+                            <td>Esponjoso pastel de vainilla con buttercream</td>
+                            <td class="price">$22.000</td>
+                        </tr>
+                        <tr>
+                            <td>Pastel Red Velvet (8 porciones)</td>
+                            <td>Clásico pastel rojo con frosting de queso crema</td>
+                            <td class="price">$28.000</td>
+                        </tr>
+                        <tr>
+                            <td>Cupcakes (docena)</td>
+                            <td>Variedad de sabores: chocolate, vainilla, red velvet</td>
+                            <td class="price">$18.000</td>
+                        </tr>
+                        <tr>
+                            <td>Galletas Decoradas (docena)</td>
+                            <td>Galletas con diseños personalizados para eventos</td>
+                            <td class="price">$15.000</td>
+                        </tr>
+                        <tr>
+                            <td>Tartaletas de Frutas (6 unidades)</td>
+                            <td>Tartaletas individuales con frutas frescas de temporada</td>
+                            <td class="price">$12.000</td>
+                        </tr>
+                        <tr>
+                            <td>Cheesecake (8 porciones)</td>
+                            <td>Suave cheesecake con base de galleta y frutos rojos</td>
+                            <td class="price">$26.000</td>
+                        </tr>
+                        <tr>
+                            <td>Postres Individuales</td>
+                            <td>Variedad de postres en porciones individuales</td>
+                            <td class="price">$5.000 c/u</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: center; margin-top: 20px; font-style: italic; color: #ff6b9d;">* Los precios pueden variar para pedidos personalizados o de gran tamaño.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dulcinea Sabores</div>
+                <div class="contact-info">
+                    <p>Dirección: Calle Dulce 123, Ciudad Delicia</p>
+                    <p>Teléfono: (123) 456-7890</p>
+                    <p>Email: info@dulcineasabores.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Dulcinea Sabores. Todos los derechos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
